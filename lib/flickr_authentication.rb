@@ -1,6 +1,7 @@
 require "flickr_authentication/version"
 require 'flickraw'
 require 'launchy'
+require 'yaml'
 
 class FlickrAuthentication
 
@@ -38,8 +39,6 @@ class FlickrAuthentication
       login = flickr.test.login
 
       puts auth.token
-
-      require 'yaml'
       data              = {}
       data["api_token"] = auth.token
       File.open(auth_file, "w"){|f| YAML.dump(data, f) }
